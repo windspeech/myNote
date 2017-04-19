@@ -9,7 +9,7 @@
 var strategys = {
 	isNotEmpty: function(value, errorMsg) {
 		if (value === '') {
-			return errorMsg;
+			return errorMsg || "不能为空";
 		}
 	},
 	// 最小长度
@@ -33,7 +33,7 @@ var Validator = function() {
 	this.cache = [];
 };
 Validator.prototype.add = function(dom, rule, errorMsg) {
-	var str = rule.splie(':');
+	var str = rule.split(':');
 	this.cache.push(function() {
 		//
 		var strategy = str.shift();
@@ -54,4 +54,26 @@ Validator.prototype.start = function() {
 	}
 };
 
-var validateFunc = function() {};
+var validateFunc = function() {
+	var validator = new Validator();
+	validator.add(registerForm.userName, 'isNotEmpty', '用户名不能为空');
+	validator.add(registerForm.password, 'minLength:6', '密码长度不能小于6位');
+	validator.add(registerForm.phoneNumber, 'mobileFormat', '手机号码格式不正确');
+
+	var errorMsg = validator.start();
+	return errorMsg;
+};
+
+var registerForm = document.getElementById('registerForm');
+var btn = document.getElementById('btn');
+
+// elements 集合可返回包含表单中所有元素的数组
+console.log(registerForm.elements);
+
+btn.onclick = function() {
+	var errorMsg = validateFunc();
+	if (errorMsg) {
+		alert(errorMsg)
+		return false;
+	}
+}

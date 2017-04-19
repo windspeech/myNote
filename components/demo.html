@@ -2,12 +2,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<title>Validator</title>
+    <title>Validator</title>
 </head>
 
 <body>
-	
-<script src="./validator.js"></script>
+    <form action="http://www.abc.com" id="registerForm" method="post">
+        <p>
+            <label>请输入用户名：</label>
+            <input type="text" name="userName" data-rule="isNotEmpty" />
+        </p>
+        <p>
+            <label>请输入密码：</label>
+            <input type="text" name="password" />
+        </p>
+        <p>
+            <label>请输入手机号码：</label>
+            <input type="text" name="phoneNumber" data-rule="mobileFormat" />
+        </p>
+        <!-- <p>
+            <label>描述：</label>
+            <textarea name="描述" id="" cols="30" rows="10"></textarea>
+        </p> -->
+        <div id="btn">验证</div>
+    </form>
+    <script src="./validator.js"></script>
 </body>
 
 </html>
