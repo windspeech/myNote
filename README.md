@@ -1,0 +1,2 @@
+# myNote
+Daily record
