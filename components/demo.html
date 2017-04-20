@@ -9,15 +9,15 @@
     <form action="http://www.abc.com" id="registerForm" method="post">
         <p>
             <label>请输入用户名：</label>
-            <input type="text" name="userName" data-rule="isNotEmpty" />
+            <input type="text" name="userName" data-rule="required" />
         </p>
         <p>
             <label>请输入密码：</label>
-            <input type="text" name="password" />
+            <input type="text" name="password" data-rule="pwd" />
         </p>
         <p>
             <label>请输入手机号码：</label>
-            <input type="text" name="phoneNumber" data-rule="mobileFormat" />
+            <input type="text" name="phoneNumber" data-rule="phone" />
         </p>
         <!-- <p>
             <label>描述：</label>
@@ -26,6 +26,16 @@
         <div id="btn">验证</div>
     </form>
     <script src="./validator.js"></script>
+    <script>
+		var btn = document.getElementById('btn');
+		btn.onclick = function() {
+			var errorMsg = validator('registerForm', true);
+			if (errorMsg) {
+				alert(errorMsg)
+				return false;
+			}
+		}
+    </script>
 </body>
 
 </html>
