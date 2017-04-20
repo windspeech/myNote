@@ -7,6 +7,14 @@
  * 
  */
 
+ /**
+ *
+ * @调用方法 validator(formEl, boolean)
+ * @formel form表单id
+ * @boolean 验证错误是否聚焦
+ *
+ */
+
 (function() {
 	// 验证规则
 	var regRule = {
@@ -73,8 +81,10 @@
 	var Validator = function() {
 		// 保存校验规则
 		this.cache = [];
+		// 保存元素
 		this.doms = [];
 	};
+	// 添加 验证
 	Validator.prototype.add = function(dom, rule, errorMsg) {
 		var str = rule.split(':');
 		this.doms.push(dom);
@@ -89,6 +99,7 @@
 		});
 	};
 
+	// 开始验证
 	Validator.prototype.start = function(focus) {
 		for (var i = 0, validatorFunc,ele; ele=this.doms[i], validatorFunc = this.cache[i++];) {
 			var msg = validatorFunc(); // 开始校验，并取得返回信息
@@ -119,5 +130,7 @@
 		var errorMsg = validator.start(focus);
 		return errorMsg;
 	};
+
+	// 导出接口，统一调用
 	window.validator = validateFunc
 })();
