@@ -12,6 +12,11 @@
  * @调用方法 validator(formEl, boolean)
  * @formel form表单id
  * @boolean 验证错误是否聚焦
+ * 
+ * <div class="controls error">
+ *     <input type="text" name="userName" data-rule="required">
+ *	   <span class="error-text">不能为空</span>
+ * </div>
  *
  */
 
@@ -83,6 +88,10 @@
 		this.cache = [];
 		// 保存元素
 		this.doms = [];
+		// 保存值
+		this.vals = [];
+		// 保存表单ID
+		this.ID = null;
 	};
 	// 添加 验证
 	Validator.prototype.add = function(dom, rule, errorMsg) {
@@ -101,25 +110,63 @@
 
 	// 开始验证
 	Validator.prototype.start = function(focus) {
+		this.vals = [];
 		for (var i = 0, validatorFunc,ele; ele=this.doms[i], validatorFunc = this.cache[i++];) {
-			var msg = validatorFunc(); // 开始校验，并取得返回信息
+			var msg = validatorFunc() || ""; // 开始校验，并取得返回信息
 			if (msg) {
 				if (focus) {
 					ele.focus();
 				}
-				return msg;
+				return this.showTipErr(ele, msg);
+			} else {
+				this.hideTipErr(ele);
 			}
 		}
+		// 收集表单信息，提交后台
+		this.getFormValues();
 	};
 
+	// 弹出错误信息
+	Validator.prototype.showTipErr = function(ele, msg) {
+		
+		var parentN = ele.parentNode; // ele父类
+		if (parentN.className.indexOf('error') === -1) {
+			parentN.className += ' error';
+			var span = document.createElement('span');
+				span.className = 'error-text';
+				span.innerHTML = msg;
+			parentN.appendChild(span);
+		}
+		return msg;
+	}
+	// 隐藏错误信息
+	Validator.prototype.hideTipErr = function(ele) {
+		var parentN = ele.parentNode; // ele父类
+		parentN.className = 'controls';
+		var errSpan = parentN.getElementsByTagName('span');
+		if (errSpan.length > 0) {
+			parentN.removeChild(errSpan[0])
+		}
+	}
+
+	// 获取表单所有信息
+	Validator.prototype.getFormValues = function() {
+		var elements = this.ID.elements;
+		for (var i = 0, ele; ele = elements[i++];) {
+			this.vals.push({
+				name: ele.name,
+				value: ele.value
+			})
+		}
+	}
 	/* 
 	* @formEle 验证表单id
 	* @focus ture聚焦
 	*/
 	var validateFunc = function(formEle, focus) {
 		var validator = new Validator();
-
-		var elements = document.getElementById(formEle).elements;
+		validator.ID = document.getElementById(formEle); // 保存ID
+		var elements = validator.ID.elements;
 		for (var i = 0, ele; ele = elements[i++];) {
 			var rule = ele.getAttribute("data-rule");
 			if (rule) {
@@ -127,8 +174,8 @@
 			}
 		}
 
-		var errorMsg = validator.start(focus);
-		return errorMsg;
+		// 错误验证信息为空验证通过
+		return !validator.start(focus) && validator.vals;
 	};
 
 	// 导出接口，统一调用

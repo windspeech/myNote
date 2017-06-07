@@ -7,18 +7,30 @@
 
 <body>
     <form action="http://www.abc.com" id="registerForm" method="post">
-        <p>
+        <div class="group">
             <label>请输入用户名：</label>
-            <input type="text" name="userName" data-rule="required" />
-        </p>
-        <p>
+            <div class="controls">
+                <input type="text" name="userName" data-rule="required" />
+            </div>
+        </div>
+        <div class="group">
             <label>请输入密码：</label>
-            <input type="text" name="password" data-rule="pwd" />
-        </p>
-        <p>
+            <div class="controls">
+                <input type="text" name="password" data-rule="pwd" />
+            </div>
+        </div>
+        <div class="group">
             <label>请输入手机号码：</label>
-            <input type="text" name="phoneNumber" data-rule="phone" />
-        </p>
+            <div class="controls">
+                <input type="text" name="phoneNumber" data-rule="phone" />
+            </div>
+        </div>
+        <div class="group">
+            <label>描述：</label>
+            <div class="controls">
+                <textarea name="des" id="" cols="30" rows="10"></textarea>
+            </div>
+        </div>
         <!-- <p>
             <label>描述：</label>
             <textarea name="描述" id="" cols="30" rows="10"></textarea>
@@ -27,14 +39,13 @@
     </form>
     <script src="./validator.js"></script>
     <script>
-		var btn = document.getElementById('btn');
-		btn.onclick = function() {
-			var errorMsg = validator('registerForm', true);
-			if (errorMsg) {
-				alert(errorMsg)
-				return false;
-			}
-		}
+    var btn = document.getElementById('btn');
+    btn.onclick = function() {
+        var validators = validator('registerForm', true);
+        if (validators) {
+            console.log(validators)
+        }
+    }
     </script>
 </body>
 
