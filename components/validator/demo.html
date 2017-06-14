@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Validator</title>
+</head>
+
+<body>
+    <form action="http://www.abc.com" id="registerForm" method="post">
+        <div class="group">
+            <label>请输入用户名：</label>
+            <div class="controls">
+                <input type="text" name="userName" data-rule="required" />
+            </div>
+        </div>
+        <div class="group">
+            <label>请输入密码：</label>
+            <div class="controls">
+                <input type="text" name="password" data-rule="pwd" />
+            </div>
+        </div>
+        <div class="group">
+            <label>请输入手机号码：</label>
+            <div class="controls">
+                <input type="text" name="phoneNumber" data-rule="phone" />
+            </div>
+        </div>
+        <div class="group">
+            <label>描述：</label>
+            <div class="controls">
+                <textarea name="des" id="" cols="30" rows="10"></textarea>
+            </div>
+        </div>
+        <!-- <p>
+            <label>描述：</label>
+            <textarea name="描述" id="" cols="30" rows="10"></textarea>
+        </p> -->
+        <div id="btn">验证</div>
+    </form>
+    <script src="./validator.js"></script>
+    <script>
+    var btn = document.getElementById('btn');
+    btn.onclick = function() {
+        var validators = validator('registerForm', true);
+        if (validators) {
+            console.log(validators)
+        }
+    }
+    </script>
+</body>
+
+</html>
