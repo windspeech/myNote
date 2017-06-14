@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>wSlide</title>
+    <style>
+    * {
+        margin: 0 auto;
+    }
+    .c_hide {
+        display: none;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="jc-tab">
+        <div class="jc-tab-trigger">
+            <a href="javascript:;" class="jc-tab-trigger-item cur">1</a>
+            <a href="javascript:;" class="jc-tab-trigger-item">2</a>
+            <a href="javascript:;" class="jc-tab-trigger-item">3</a>
+        </div>
+        <div class="jc-tab-container">
+            <div class="jc-tab-container-item">11</div>
+            <div class="jc-tab-container-item c_hide">22</div>
+            <div class="jc-tab-container-item c_hide">33</div>
+        </div>
+    </div>
+    <script src="../jquery-1.12.2.js"></script>
+    <script src="./tab.js"></script>
+    <script>
+    TAB('jc-tab', 'cur');
+    </script>
+</body>
+
+</html>
