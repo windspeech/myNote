@@ -24,6 +24,7 @@ git remote –v -- 查看远程库的详细信息
 git remote add origin https://github.com/windspeech/testgit.git -- 关联一个远程库
 git push –u(第一次要用-u 以后不需要) origin master 把当前master分支推送到远程库
 git clone https://github.com/*** -- 从远程库中克隆
+git remote set-url origin https://github.com/*** -- 修改远程库url
 
 git pull -- 把最新的提交从[origin/dev]抓下来
 
