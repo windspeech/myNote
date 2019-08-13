@@ -37,8 +37,8 @@ git merge name -- 合并某分支到当前分支
 git merge –no-ff  -m “注释” name -- 来禁用”Fast forward”模式，保证删除后分支信息还存在
 
 ###获取git分支某指定的目录
-1. git init bootstrap && cd bootstrap
+1. git init favorite && cd favorite
 2. git config core.sparsecheckout true
-3. echo '/js/tests/*' >> .git/info/sparse-checkout
-4. git remote add origin git@github.com:twbs/bootstrap.git
+3. echo '/favorite-plugs/*' >> .git/info/sparse-checkout
+4. git remote add origin https://github.com/windspeech/myNote
 5. git pull origin master
