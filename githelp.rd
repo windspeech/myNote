@@ -42,3 +42,8 @@ git merge –no-ff  -m “注释” name -- 来禁用”Fast forward”模式，
 3. echo '/favorite-plugs/*' >> .git/info/sparse-checkout
 4. git remote add origin https://github.com/windspeech/myNote
 5. git pull origin master
+
+### 打标签
+git tag -a v1.0(标签名) xxxx(版本) -m '描述'
+git tag -- 查看所有标签
+git tag -d tagname -- 删除标签
