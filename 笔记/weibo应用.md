@@ -57,3 +57,13 @@ mix.js('resources/js/app.js', 'public/js')
 
 `mix()` 方法与 `webpack.mix.js` 文件里的逻辑遥相呼应
 
+####  toArray () 和 json_encode 都会将时间格式改变（laravel7）
+
+在 `\App\Models\User.php` 中指定序列化时的日期类型：
+
+```php
+ protected $casts = [
+     'created_at' => 'datetime:Y-m-d H:i:s',
+     'updated_at' => 'datetime:Y-m-d H:i:s',
+ ];
+```
