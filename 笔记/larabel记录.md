@@ -5,19 +5,38 @@ php artisan make:controller VersionController --model=Models/Version --api
 
 ```
 
+- 创建model并生成迁移文件
+
+```
+php artisan make:model Models/Article -m
+```
+
+
+
 - 生成数据库文件
 
 ```
 php artisan make:migration ?
+php artisan make:migration create_statuses_table --create="statuses"
 ```
 
 
 
-- 执行数据库文件生成table
+- 执行迁移文件
 
 ```
 php artisan migrate --path=/database/migrations/xxxxx文件名
 ```
+
+- 数据填充
+
+```
+php artisan make:seeder UsersTableSeeder
+```
+
+
+
+
 
 
 

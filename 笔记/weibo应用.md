@@ -67,3 +67,30 @@ mix.js('resources/js/app.js', 'public/js')
      'updated_at' => 'datetime:Y-m-d H:i:s',
  ];
 ```
+
+
+
+#### 添加语言包
+
+```
+composer require "overtrue/laravel-lang:~3.0"
+```
+
+安装成功后，在 `config/app.php` 文件中将以下这一行
+
+```
+Illuminate\Translation\TranslationServiceProvider::class,
+替换为
+Overtrue\LaravelLang\TranslationServiceProvider::class,
+并设置
+'locale' => 'zh-CN',
+```
+
+
+
+#### 创建授权策略
+
+```
+php artisan make:policy UserPolicy
+```
+
