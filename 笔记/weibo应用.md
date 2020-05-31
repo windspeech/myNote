@@ -94,3 +94,19 @@ Overtrue\LaravelLang\TranslationServiceProvider::class,
 php artisan make:policy UserPolicy
 ```
 
+
+
+#### 忽略版本
+
+```
+composer install --ignore-platform-reqs
+```
+
+
+
+#### 自动加载
+
+```
+composer dump-atoload
+```
+
