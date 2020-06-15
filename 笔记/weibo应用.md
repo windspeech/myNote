@@ -110,3 +110,19 @@ composer install --ignore-platform-reqs
 composer dump-atoload
 ```
 
+
+
+#### XSS攻击
+
+配置扩展包
+
+```
+composer require "mews/purifier:~3.0"
+```
+
+配置 HTMLPurifier for Laravel
+
+```
+php artisan vendor:publish --provider="Mews\Purifier\PurifierServiceProvider"
+```
+

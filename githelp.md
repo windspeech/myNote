@@ -47,4 +47,6 @@ git merge –no-ff  -m “注释” name -- 来禁用”Fast forward”模式，
 git tag -a v1.0(标签名) xxxx(版本) -m '描述'
 git tag -- 查看所有标签
 git tag -d tagname -- 删除标签
+git push origin :refs/tags/v0.1 //远程删除标签
 git push origin <tagname> -- 推送
+
