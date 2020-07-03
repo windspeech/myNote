@@ -110,3 +110,25 @@ composer install --ignore-platform-reqs
 composer dump-atoload
 ```
 
+
+
+#### laragon 终端log 中文乱码
+
+```
+菜单 -> settings -> Environment
+添加： set LANG=zh_CN.UTF-8
+```
+
+
+
+#### laragon 添加 PHP_Redis 扩展
+
+PECL 官网按需下载 redis 扩展
+`http://pecl.php.net/package/redis/4.0.2/windows`
+
+`/d/laragon/bin/php/php-7.2.19-Win32-VC15-x64/ext` 路径下，把上面下载的文件放到此处
+
+/d/laragon/bin/php/php-7.2.19-Win32-VC15-x64/php.ini 文件
+添加一行 extension=php_redis
+
+重启
