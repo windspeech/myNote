@@ -47,4 +47,22 @@ git merge –no-ff  -m “注释” name -- 来禁用”Fast forward”模式，
 git tag -a v1.0(标签名) xxxx(版本) -m '描述'
 git tag -- 查看所有标签
 git tag -d tagname -- 删除标签
+git push origin :refs/tags/v0.1 //远程删除标签
 git push origin <tagname> -- 推送
+
+
+
+#### 创建git仓库目录
+
+git服务器创建裸仓库 ,git服务器初始化仓库的时候一定要加上--bare，否则你的仓库不能推送代码,test为项目
+
+```
+git init --bare /data/gitrepos/test/test.git
+```
+
+git服务器修改git仓库的读写权限，这样子git仓库就能读写了，否则会报错拒绝提交的
+
+```
+chmod -R 777 /data/gitrepos/test
+```
+

@@ -132,3 +132,18 @@ PECL 官网按需下载 redis 扩展
 添加一行 extension=php_redis
 
 重启
+
+#### XSS攻击
+
+配置扩展包
+
+```
+composer require "mews/purifier:~3.0"
+```
+
+配置 HTMLPurifier for Laravel
+
+```
+php artisan vendor:publish --provider="Mews\Purifier\PurifierServiceProvider"
+```
+
