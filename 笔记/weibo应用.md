@@ -107,7 +107,7 @@ composer install --ignore-platform-reqs
 #### 自动加载
 
 ```
-composer dump-atoload
+composer dump-autoload
 ```
 
 
@@ -146,4 +146,68 @@ composer require "mews/purifier:~3.0"
 ```
 php artisan vendor:publish --provider="Mews\Purifier\PurifierServiceProvider"
 ```
+
+
+
+#### 关闭服务器防火墙
+
+```
+iptables -L -n 
+
+getenforce 
+
+setenforce 0   
+
+iptables -F
+```
+
+#### Call to undefined function Gregwar\\Captcha\\imagecreatetruecolor()
+
+```
+yum -y install php-gd
+```
+
+
+
+#### Call to undefined function mb_substr()处理方法！
+
+yum install php-mbstring 命令安装，安装好后 service httpd restart 重启apache服务器，一切正常！
+
+
+
+#### Class 'DOMDocument' not found
+
+给PHP添加 xml模块：yum install php-xml
+
+
+
+#### encore/laravel-admin 扩展包
+
+```
+composer require encore/laravel-admin "1.7.15"
+php artisan vendor:publish --provider="Encore\Admin\AdminServiceProvider"
+php artisan admin:install
+```
+
+
+
+#### laravel7时间格式问题
+
+```
+.
+.
+.
+use Encore\Admin\Traits\DefaultDatetimeFormat;
+
+class User extends Authenticatable implements MustVerifyEmail
+{
+  // 加上这个 Trait
+  use DefaultDatetimeFormat;
+  .
+  .
+  .
+}
+```
+
+
 

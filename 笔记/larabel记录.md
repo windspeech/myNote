@@ -5,10 +5,10 @@ php artisan make:controller VersionController --model=Models/Version --api
 
 ```
 
-- 创建model并生成迁移文件
+- 创建model并生成 `factory` 工厂文件和 `migration` 数据库迁移文件
 
 ```
-php artisan make:model Models/Article -m
+php artisan make:model Models/Article -fm
 ```
 
 

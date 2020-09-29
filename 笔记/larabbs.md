@@ -52,3 +52,20 @@ php artisan make:middleware EnsureEmailIsVerified
 composer require intervention/image
 ```
 
+- 中文语言包
+
+```
+composer require overtrue/laravel-lang
+```
+
+安装成功后，在 `config/app.php` 文件中将 以下这一行：
+
+```php
+Illuminate\Translation\TranslationServiceProvider::class,
+```
+
+替换为：
+
+```php
+Overtrue\LaravelLang\TranslationServiceProvider::class,
+```
