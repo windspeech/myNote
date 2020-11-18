@@ -32,7 +32,8 @@ git branch --查看当前所有分支
 git branch name --创建分支
 git checkout name --切换分支
 git checkout -b name --创建并切换分支
-git branch -d name --删除分支
+git branch -d name --删除分支 
+git push origin --delete new_a -- 删除远程分支
 git merge name -- 合并某分支到当前分支
 git merge –no-ff  -m “注释” name -- 来禁用”Fast forward”模式，保证删除后分支信息还存在
 
